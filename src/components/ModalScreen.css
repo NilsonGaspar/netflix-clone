@@ -1,0 +1,245 @@
+.modal {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  overflow-y: auto;
+  z-index: 99;
+  display: none;
+}
+
+.modal-content {
+  max-width: 1370px;
+  min-height: 100vh;
+  border-radius: 5px;
+  color: #ffffff;
+  background: #181818;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal-info {
+  margin-top: 25px;
+}
+
+.modal-vote {
+  display: inline-block;
+  margin-left: 50px;
+  color: #46d369;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.modal-season {
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+.modal-date {
+  display: inline-block;
+  margin-left: 15px;
+  font-size: 18px;
+}
+
+.modal-genre {
+  width: 400px;
+  height: 140px;
+  float: right;
+  margin-left: 25px;
+  margin-right: 40px;
+}
+
+.modal-genre-span {
+  color: #a7a7a7;
+}
+
+.modal-overview {
+  margin: 20px 50px 60px 50px;
+  font-size: 18px;
+}
+
+.modal-btn-close {
+  float: right;
+  margin-right: 50px;
+  border-radius: 3px;
+  padding: 10px 20px;
+  border: none;
+  color: #ffffff;
+  background-color: #ee0000;
+  opacity: 0.8;
+  z-index: 99;
+  cursor: pointer;
+}
+
+select {
+  border-radius: 3px;
+  outline: none;
+  background-color: #242424;
+  color: #ffffff;
+  padding: 10px 40px 10px 20px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  border: solid 1px #919191;
+}
+
+.modal-select-season {
+  float: right;
+  position: relative;
+  margin-right: 50px;
+}
+
+.custom-arrow {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: block;
+  background-color: #242424;
+  width: 50px;
+  height: 96%;
+  pointer-events: none;
+  cursor: pointer;
+  border: solid 1px #919191;
+  border-left: none;
+  border-radius: 0 3px 3px 0;
+}
+
+.custom-arrow::before,
+.custom-arrow::after {
+  --size: 0.6em;
+  content: "";
+  position: absolute;
+  height: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.custom-arrow::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid #ffffff;
+  top: 17%;
+}
+
+.custom-arrow::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid #ffffff;
+  top: 47%;
+}
+
+/* Season Ep. List */
+.season-title {
+  margin: 25px 50px;
+}
+
+.season-item {
+  display: flex;
+  align-items: center;
+  margin: 0 50px;
+  border-top: 1px solid #424242;
+}
+
+.season-item:hover {
+  background-color: #242424;
+}
+
+.season-details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 30px;
+}
+
+.season-episode {
+  font-size: 24px;
+  margin: 0 35px;
+}
+
+.season-poster {
+  object-fit: contain;
+  border-radius: 4px;
+  max-width: 250px;
+  margin: 20px 0;
+}
+
+.season-episode-name {
+  min-width: 400px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.season-episode-vote {
+  font-size: 16px;
+}
+
+.season-episode-overview {
+  margin-top: 10px;
+  color: #dddddd;
+  font-size: 15px;
+  width: 100%;
+}
+
+/* ////// More Like This */
+.more-like-this {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-left: 45px;
+  margin-right: 45px;
+}
+
+.more-like-this-item {
+  width: 32%;
+  background-color: #303030;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.more-like-this-item:hover {
+  background-color: #242424;
+}
+.more-like-this-title {
+  margin: 0 50px;
+  border-top: 1px solid #424242;
+  padding: 50px 0 25px 0;
+}
+
+.more-like-this-poster {
+  object-fit: cover;
+  object-position: 100% 25%;
+  height: 230px;
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.more-like-this-vote {
+  padding: 10px 20px;
+  color: #46d369;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.more-like-this-date {
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+.more-like-this-overview {
+  color: #c5c5c5;
+  padding: 10px 20px 20px 20px;
+  min-height: 70px;
+  font-size: 16px;
+}
+
+/* .modal__screen__fade__effect {
+  height: 250px;
+  background-image: linear-gradient(180deg, transparent, rgb(224, 32, 32), #ff0000);
+} */

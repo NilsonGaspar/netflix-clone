@@ -1,0 +1,94 @@
+.movie__row__title {
+  margin: 0 0 0 50px;
+  font-size: 38px;
+}
+
+.movie__row__item {
+  padding: 35px 0 50px 0;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  margin-left: 50px;
+}
+
+.movie__row__item.hidde {
+  margin-left: 0;
+  transition: all ease 0.3s;
+}
+
+.movie__row__item::-webkit-scrollbar {
+  display: none;
+}
+
+.movie__row__poster {
+  object-fit: contain;
+  max-width: 445px;
+  margin-right: 10px;
+  border-radius: 4px;
+  transition: all ease 0.3s;
+}
+
+.movie__row__poster:hover {
+  transform: scale(1.3);
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.movie__row__poster__large {
+  max-width: 445px;
+}
+
+.movie__row__poster__large:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* Material Arrow icons */
+.movie__row__left > .MuiSvgIcon-root {
+  margin-left: 20px;
+  font-size: 40px;
+}
+
+.movie__row__right > .MuiSvgIcon-root {
+  font-size: 40px;
+}
+
+.movie__row__left,
+.movie__row__right {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  height: 323px;
+  width: 50px;
+  z-index: 3;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.movie-row:hover .movie__row__left,
+.movie-row:hover .movie__row__right {
+  opacity: 1;
+}
+
+.movie__row__left.closed {
+  display: none;
+}
+
+.movie__row__left {
+  background-image: linear-gradient(190deg, transparent, rgba(0, 0, 0, 0.1), #000000ad);
+  left: 0;
+}
+
+.movie__row__right {
+  background-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.3), #000000ad);
+  right: 0;
+}
+
+.movie__row__left__large,
+.movie__row__right__large {
+  height: 736px;
+}

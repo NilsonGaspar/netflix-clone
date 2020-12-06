@@ -1,0 +1,56 @@
+.featured__movie {
+  height: 85vh;
+  object-fit: contain;
+  color: #ffffff;
+  margin-bottom: -50px;
+}
+
+.featured__movie__content {
+  padding-top: 40vh;
+  margin-left: 50px;
+  max-height: 200px;
+}
+
+.title {
+  font-size: 88px;
+  padding-bottom: 10px;
+}
+
+.featured__movie__description {
+  font-size: 34px;
+  font-weight: 400;
+  max-width: 1000px;
+}
+
+.featured__movie__button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 24px;
+  border-radius: 4px;
+  margin-right: 15px;
+  margin-top: 30px;
+  color: #ffffff;
+}
+
+.featured__movie__button.btnPlay {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px 50px;
+}
+
+.featured__movie__button.btnMoreInfo {
+  background-color: #727475dc;
+  padding: 13px 50px;
+}
+
+.featured__movie__button:hover {
+  opacity: 0.8;
+  transition: all 0.2s;
+}
+
+.fade__effect {
+  height: 60vh;
+  background-image: linear-gradient(180deg, transparent, rgb(14, 14, 14), #000000);
+}
