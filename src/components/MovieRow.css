@@ -1,61 +1,62 @@
-.movie__row__title {
+.movie-row-title {
   margin: 0 0 0 50px;
   font-size: 38px;
 }
 
-.movie__row__item {
+.movie-row-item {
   padding: 35px 0 50px 0;
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
   scroll-behavior: smooth;
   margin-left: 50px;
+  transition: all 0.5s ease;
 }
 
-.movie__row__item.hidde {
+.movie-row-item.hidde {
   margin-left: 0;
-  transition: all ease 0.3s;
+  transition: all 0.5s ease;
 }
 
-.movie__row__item::-webkit-scrollbar {
+.movie-row-item::-webkit-scrollbar {
   display: none;
 }
 
-.movie__row__poster {
+.movie-row-poster {
   object-fit: contain;
   max-width: 445px;
   margin-right: 10px;
   border-radius: 4px;
-  transition: all ease 0.3s;
+  transition: all 0.5s ease;
 }
 
-.movie__row__poster:hover {
+.movie-row-poster:hover {
   transform: scale(1.3);
   cursor: pointer;
   border-radius: 8px;
 }
 
-.movie__row__poster__large {
+.movie-row-poster-large {
   max-width: 445px;
 }
 
-.movie__row__poster__large:hover {
+.movie-row-poster-large:hover {
   transform: scale(1.1);
   cursor: pointer;
 }
 
 /* Material Arrow icons */
-.movie__row__left > .MuiSvgIcon-root {
+.movie-row-left > .MuiSvgIcon-root {
   margin-left: 20px;
   font-size: 40px;
 }
 
-.movie__row__right > .MuiSvgIcon-root {
+.movie-row-right > .MuiSvgIcon-root {
   font-size: 40px;
 }
 
-.movie__row__left,
-.movie__row__right {
+.movie-row-left,
+.movie-row-right {
   position: absolute;
   display: flex;
   align-items: center;
@@ -69,26 +70,26 @@
   transition: all 0.5s;
 }
 
-.movie-row:hover .movie__row__left,
-.movie-row:hover .movie__row__right {
+.movie-row:hover .movie-row-left,
+.movie-row:hover .movie-row-right {
   opacity: 1;
 }
 
-.movie__row__left.closed {
+.movie-row-left.closed {
   display: none;
 }
 
-.movie__row__left {
-  background-image: linear-gradient(190deg, transparent, rgba(0, 0, 0, 0.1), #000000ad);
+.movie-row-left {
+  background-image: linear-gradient(-90deg, transparent, rgba(0, 0, 0, 0.3), #000000ad);
   left: 0;
 }
 
-.movie__row__right {
+.movie-row-right {
   background-image: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.3), #000000ad);
   right: 0;
 }
 
-.movie__row__left__large,
-.movie__row__right__large {
+.movie-row-left-large,
+.movie-row-right-large {
   height: 736px;
 }

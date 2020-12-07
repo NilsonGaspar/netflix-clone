@@ -4,7 +4,7 @@ function YoutubePlayer({ videoKey, showModal }) {
   const HandleVideoKey = videoKey?.[0]?.key;
 
   return (
-    <div className="youtube__player">
+    <div className="youtube-player">
       <iframe
         style={{
           position: "absolute",

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 * ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -19,6 +20,13 @@
   padding-bottom: 100px;
 }
 
-/* .app.active {
-  position: fixed;
-} */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}

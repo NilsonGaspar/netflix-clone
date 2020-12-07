@@ -45,7 +45,7 @@ function FeaturedMovie({
 
   return (
     <div
-      className="featured__movie"
+      className="featured-movie"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "left top",
@@ -53,22 +53,22 @@ function FeaturedMovie({
       }}
     >
       {play ? <YoutubePlayer videoKey={videoKey} /> : ""}
-      <div className="featured__movie__content">
+      <div className="featured-movie-content">
         <h2 className="title">{movie?.name || movie?.original_name}</h2>
-        <div className="featured__movie__description">
+        <div className="featured-movie-description">
           {" "}
           {HandleRequests.HandleLongText(movie?.overview, 150)}
         </div>
-        <div className="featured__movie__buttons">
-          <button className="featured__movie__button btnPlay" onClick={() => PlayMovie(movie)}>
+        <div className="featured-movie-buttons">
+          <button className="featured-movie-button btnPlay" onClick={() => PlayMovie(movie)}>
             &#9658; Play
           </button>
-          <button className="featured__movie__button btnMoreInfo" onClick={() => OpenModal(movie)}>
+          <button className="featured-movie-button btnMoreInfo" onClick={() => OpenModal(movie)}>
             &#x1F6C8; More Info
           </button>
         </div>
       </div>
-      <div className="fade__effect" />
+      <div className="fade-effect" />
     </div>
   );
 }
