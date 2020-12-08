@@ -15,7 +15,7 @@ function YoutubePlayer({ videoKey, showModal }) {
         }}
         frameBorder="0"
         allowFullScreen={true}
-        src={`https://www.youtube.com/embed/${HandleVideoKey}?autoplay=1&mute=1`}
+        src={`https://www.youtube-nocookie.com/embed/${HandleVideoKey}?autoplay=1&mute=1`}
       />
     </div>
   );

@@ -4,6 +4,10 @@ import "./ModalScreen.css";
 import YoutubePlayer from "./YoutubePlayer.js";
 import HandleRequests from "../HandleRequests";
 
+// icons
+
+import { VscChromeClose } from "react-icons/vsc";
+
 function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey, setVideoKey }) {
   const MOVIE_URL = "https://api.themoviedb.org/3/movie/";
   const TV_URL = "https://api.themoviedb.org/3/tv/";
@@ -14,6 +18,21 @@ function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey,
   const [similarShows, setSimilarShows] = useState([]);
   const [numberOfSeasons, setNumberOfSeasons] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  let modalRef = useRef();
+
+  useEffect(() => {
+    let clickOutside = (event) => {
+      if (!modalRef.current.contains(event.target)) {
+        setShowModal(false);
+        CleanInputs();
+        console.log(event);
+      }
+    };
+    document.addEventListener("mousedown", clickOutside);
+    return () => {
+      document.removeEventListener("mousedown", clickOutside);
+    };
+  });
 
   let genres = [];
   for (let i in movieDetails?.genres) {
@@ -89,9 +108,19 @@ function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey,
 
   return (
     <div className={`modal ${showModal ? "is-open" : ""}`}>
-      <div className="modal-content">
+      <div ref={modalRef} className="modal-content">
+        <div className="modal-player">
+          <button
+            className="modal-btn-close"
+            onClick={() => {
+              setShowModal(false);
+              CleanInputs();
+            }}
+          >
+            <VscChromeClose />
+          </button>
+        </div>
         <YoutubePlayer videoKey={videoKey} showModal={showModal} />
-
         <div className="modal-info">
           <div className="modal-vote">{getMovie?.vote_average} Rating</div>
 
@@ -120,16 +149,6 @@ function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey,
             <span className={`custom-arrow ${isOpen ? "is-open" : ""}`}></span>
           </div>
         </div>
-
-        <button
-          className="modal-btn-close"
-          onClick={() => {
-            setShowModal(false);
-            CleanInputs();
-          }}
-        >
-          Close
-        </button>
 
         {getSeason?.[0] ? <h2 className="season-title">Episodes</h2> : ""}
 
