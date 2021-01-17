@@ -1,14 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-* ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-* ::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
 * {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -17,7 +8,8 @@
 .app {
   background-color: #000000;
   color: #e6e6e6;
-  padding-bottom: 100px;
+  /* height: 100vh;
+  width: 100vw; */
 }
 
 ul {

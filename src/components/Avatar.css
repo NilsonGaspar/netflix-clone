@@ -1,0 +1,29 @@
+.avatar {
+  width: 100vw;
+  height: 100vh;
+}
+
+.avatar-container {
+  margin-left: 50px;
+}
+
+.avatar-title {
+  padding-top: 50px;
+}
+.avatar-arrow {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.avatar-arrow:hover {
+  color: #d10000;
+}
+
+.avatar-item {
+  display: inline-block;
+  margin: 20px 20px 0 0;
+}
+
+.avatar-item:hover {
+  cursor: pointer;
+}

@@ -3,14 +3,7 @@ import "./FeaturedMovie.css";
 import HandleRequests from "../HandleRequests";
 import YoutubePlayer from "./YoutubePlayer";
 
-function FeaturedMovie({
-  fetchURL,
-  setGetMovie,
-  setShowModal,
-  videoKey,
-  setVideoKey,
-  handleShowNav,
-}) {
+function FeaturedMovie({ fetchURL, setGetMovie, setShowModal, videoKey, setVideoKey, showNav }) {
   const IMG_URL_HQ = "https://image.tmdb.org/t/p/original";
   const [movie, setMovie] = useState([]);
   const [play, setPlay] = useState(false);
@@ -25,12 +18,12 @@ function FeaturedMovie({
   }, []);
 
   useEffect(() => {
-    if (handleShowNav && play) {
+    if (showNav && play) {
       setPlay(false);
       setVideoKey("");
       setGetMovie([]);
     }
-  }, [handleShowNav]);
+  }, [showNav]);
 
   async function OpenModal(movie) {
     setGetMovie(movie);

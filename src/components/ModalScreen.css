@@ -1,11 +1,27 @@
 .modal {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
   position: fixed;
   overflow-y: auto;
   z-index: 99;
   display: none;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: -1;
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.overlay.is-open {
+  display: block;
 }
 
 .modal-content {
@@ -17,10 +33,6 @@
   box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
   margin: 10px auto 0 auto;
   padding-bottom: 50px;
-}
-
-.modal.is-open {
-  display: block;
 }
 
 .modal-info {
@@ -68,6 +80,7 @@
   display: flex;
   justify-content: flex-end;
 }
+
 .modal-btn-close {
   display: flex;
   position: absolute;
@@ -77,11 +90,13 @@
   background-color: #2e2e2e;
   cursor: pointer;
   z-index: 99;
-  opacity: 0.8;
   font-size: 22px;
   padding: 10px;
   margin-right: 120px;
   margin-top: 10px;
+}
+.modal-btn-close:hover {
+  opacity: 0.8;
 }
 
 select {
@@ -108,42 +123,20 @@ select {
   top: 0;
   display: block;
   background-color: #242424;
-  width: 50px;
+  width: 40px;
   height: 96%;
   pointer-events: none;
   cursor: pointer;
   border: solid 1px #919191;
-  border-left: none;
-  border-radius: 0 3px 3px 0;
-}
-
-.custom-arrow::before,
-.custom-arrow::after {
-  --size: 0.6em;
-  content: "";
-  position: absolute;
-  height: 0;
-  left: 50%;
-  transform: translate(-50%, 50%);
-}
-
-.custom-arrow::before {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid #ffffff;
-  top: 17%;
-}
-
-.custom-arrow::after {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-top: var(--size) solid #ffffff;
-  top: 47%;
+  border-right: none;
+  font-size: 40px;
+  transform: rotate(180deg);
+  padding-left: 10px;
 }
 
 /* Season Ep. List */
 .season-title {
-  margin: 25px 50px;
+  margin: 30px 50px;
 }
 
 .season-item {

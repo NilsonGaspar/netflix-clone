@@ -2,18 +2,20 @@ import React, { useState, useEffect, useRef } from "react";
 import "./Nav.css";
 import { IconContext } from "react-icons/lib";
 import { FaBars, FaTimes } from "react-icons/fa";
+import UseAuthListener from "./UseAuthListener";
 
-function Nav({ handleShowNav, setHandleShowNav, HandleLogOut }) {
+function Nav({ showNav, setShowNav, HandleLogOut }) {
+  const { user } = UseAuthListener();
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 700) {
-        setHandleShowNav(true);
+        setShowNav(true);
       } else {
-        setHandleShowNav(false);
+        setShowNav(false);
       }
     });
     return () => {
-      window.removeEventListener("scroll", setHandleShowNav(true));
+      window.removeEventListener("scroll", setShowNav(true));
     };
   }, []);
 
@@ -21,11 +23,7 @@ function Nav({ handleShowNav, setHandleShowNav, HandleLogOut }) {
   const closeMobileMenu = () => setClick(false);
 
   let avatar = (
-    <img
-      className="nav-avatar"
-      src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/84c20033850498.56ba69ac290ea.png"
-      alt="Netflix Avatar"
-    />
+    <img className="nav-avatar" src={`./images/users/${user?.photoURL}.png`} alt="Netflix Avatar" />
   );
 
   let logo = (
@@ -40,9 +38,9 @@ function Nav({ handleShowNav, setHandleShowNav, HandleLogOut }) {
     const [open, setOpen] = useState(false);
     return (
       <li className="nav-item">
-        <a href="#" className="nav-link" onClick={() => setOpen(!open)}>
+        <p className="nav-link" onClick={() => setOpen(!open)}>
           {props.link}
-        </a>
+        </p>
         {open && props.children}
       </li>
     );
@@ -54,13 +52,9 @@ function Nav({ handleShowNav, setHandleShowNav, HandleLogOut }) {
 
     function DropdownItem(props) {
       return (
-        <a
-          href="#"
-          className="menu-item"
-          onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}
-        >
+        <a className="menu-item">
           <span className="icon-avatar">{props.leftIcon}</span>
-          {props.children}
+          <p onClick={props.goToLink}>{props.children}</p>
         </a>
       );
     }
@@ -69,17 +63,19 @@ function Nav({ handleShowNav, setHandleShowNav, HandleLogOut }) {
       <div className="dropdown" ref={dropdownRef}>
         <div className="menu">
           <DropdownItem leftIcon={avatar} goToMenu="profile">
-            John Brown
+            {user?.displayName}
           </DropdownItem>
           <DropdownItem goToMenu="help">Help Centre</DropdownItem>
-          <DropdownItem goToMenu="signout">Sign out of Netflix</DropdownItem>
+          <DropdownItem goToLink={() => HandleLogOut()} goToMenu="signout">
+            Sign out of Netflix
+          </DropdownItem>
         </div>
       </div>
     );
   }
 
   return (
-    <div className={`nav ${handleShowNav ? "nav-black" : ""}`}>
+    <div className={`nav ${showNav ? "nav-black" : ""}`}>
       <div className="nav-container">
         <NavItem link={logo} />
         <div className="menu-icons" onClick={() => setClick(!click)}>

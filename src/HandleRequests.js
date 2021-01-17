@@ -1,4 +1,6 @@
-const API_KEY = "HERE";
+import firestore from "./Firebase";
+
+const API_KEY = "API_KEY";
 const BASE_URL = "https://api.themoviedb.org/3";
 const LANGUAGE = "&language=en-GB";
 const END_POINT = `api_key=${API_KEY}${LANGUAGE}`;
@@ -24,5 +26,38 @@ export default {
       return str;
     }
     return str?.slice(0, num) + "...";
+  },
+
+  SaveUserDatabase: async (data) => {
+    await firestore.collection("user").doc(data.uid).set(
+      {
+        uid: data.uid,
+        userName: data.userName,
+        avatar: data.avatar,
+        email: data.email,
+      },
+      { merge: true }
+    );
+  },
+
+  UpdgradeUserDetails: async (user, userName, userAvatarURL) => {
+    await firestore.collection("user").doc(user.uid).collection("profiles").doc(userName).set({
+      userName: userName,
+      avatar: userAvatarURL,
+    });
+    await firestore.collection("user").doc(user.uid).set(
+      {
+        userName: userName,
+        avatar: userAvatarURL,
+      },
+      { merge: true }
+    );
+  },
+
+  CreateProfile: async (user, userName, userAvatarURL) => {
+    await firestore.collection("user").doc(user.uid).collection("profiles").doc(userName).set({
+      userName: userName,
+      avatar: userAvatarURL,
+    });
   },
 };

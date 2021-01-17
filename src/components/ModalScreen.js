@@ -6,7 +6,7 @@ import HandleRequests from "../HandleRequests";
 
 // icons
 
-import { VscChromeClose } from "react-icons/vsc";
+import { VscChromeClose, VscDebugBreakpointFunction } from "react-icons/vsc";
 
 function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey, setVideoKey }) {
   const MOVIE_URL = "https://api.themoviedb.org/3/movie/";
@@ -18,21 +18,6 @@ function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey,
   const [similarShows, setSimilarShows] = useState([]);
   const [numberOfSeasons, setNumberOfSeasons] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  let modalRef = useRef();
-
-  useEffect(() => {
-    let clickOutside = (event) => {
-      if (!modalRef.current.contains(event.target)) {
-        setShowModal(false);
-        CleanInputs();
-        console.log(event);
-      }
-    };
-    document.addEventListener("mousedown", clickOutside);
-    return () => {
-      document.removeEventListener("mousedown", clickOutside);
-    };
-  });
 
   let genres = [];
   for (let i in movieDetails?.genres) {
@@ -106,9 +91,24 @@ function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey,
     setGetMovie([]);
   }
 
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "";
+    }
+  }, [showModal]);
+
   return (
     <div className={`modal ${showModal ? "is-open" : ""}`}>
-      <div ref={modalRef} className="modal-content">
+      <div
+        className={`overlay ${showModal ? "is-open" : ""}`}
+        onClick={() => {
+          setShowModal(false);
+          CleanInputs();
+        }}
+      ></div>
+      <div className="modal-content">
         <div className="modal-player">
           <button
             className="modal-btn-close"
@@ -146,7 +146,9 @@ function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey,
                 <option value={season}>Season {season}</option>
               ))}
             </select>
-            <span className={`custom-arrow ${isOpen ? "is-open" : ""}`}></span>
+            <span className={`custom-arrow ${isOpen ? "is-open" : ""}`}>
+              <VscDebugBreakpointFunction />
+            </span>
           </div>
         </div>
 
