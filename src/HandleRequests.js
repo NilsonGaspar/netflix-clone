@@ -15,8 +15,8 @@ export default {
   RomanceMovies: `${BASE_URL}/discover/movie?with_genres=10749&`,
   ComedyMovies: `${BASE_URL}/discover/movie?with_genres=99&`,
 
-  FetchData: async (fetchURL) => {
-    const request = await fetch(`${fetchURL}${END_POINT}`);
+  FetchData: async (url) => {
+    const request = await fetch(`${url}${END_POINT}`);
     const response = await request.json();
     return response;
   },
@@ -28,19 +28,29 @@ export default {
     return str?.slice(0, num) + "...";
   },
 
-  SaveUserDatabase: async (data) => {
-    await firestore.collection("user").doc(data.uid).set(
-      {
-        uid: data.uid,
-        userName: data.userName,
-        avatar: data.avatar,
-        email: data.email,
-      },
-      { merge: true }
-    );
+  SaveUser: async (user) => {
+    const { uid, displayName, photoURL, email } = user;
+    await firestore.collection("user").doc(uid).set({
+      uid,
+      displayName,
+      photoURL,
+      email,
+    });
   },
 
-  UpdgradeUserDetails: async (user, userName, userAvatarURL) => {
+  SaveProfile: async (user) => {
+    await firestore
+      .collection("user")
+      .doc(user.uid)
+      .collection("profiles")
+      .doc(user.displayName)
+      .set({
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+      });
+  },
+
+  UpdateUserDetails: async (user, userName, userAvatarURL) => {
     await firestore.collection("user").doc(user.uid).collection("profiles").doc(userName).set({
       userName: userName,
       avatar: userAvatarURL,
@@ -54,7 +64,7 @@ export default {
     );
   },
 
-  CreateProfile: async (user, userName, userAvatarURL) => {
+  NewProfile: async (user, userName, userAvatarURL) => {
     await firestore.collection("user").doc(user.uid).collection("profiles").doc(userName).set({
       userName: userName,
       avatar: userAvatarURL,

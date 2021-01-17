@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./FeaturedMovie.css";
 import HandleRequests from "../HandleRequests";
 import YoutubePlayer from "./YoutubePlayer";
-
-function FeaturedMovie({ fetchURL, setGetMovie, setShowModal, videoKey, setVideoKey, showNav }) {
+import { ModalContext, GetMovieContext } from "./UseContext";
+function FeaturedMovie({ url, videoKey, setVideoKey, showNav }) {
+  const { setShowModal } = useContext(ModalContext);
+  const { setGetMovie } = useContext(GetMovieContext);
   const IMG_URL_HQ = "https://image.tmdb.org/t/p/original";
   const [movie, setMovie] = useState([]);
   const [play, setPlay] = useState(false);
 
   useEffect(() => {
     async function FetchData() {
-      const response = await HandleRequests.FetchData(fetchURL);
+      const response = await HandleRequests.FetchData(url);
       setMovie(response.results[Math.floor(Math.random() * response.results.length)]);
       return response;
     }

@@ -1,12 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "./MovieRow.css";
 import HandleRequests from "../HandleRequests";
 
 // icons
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import { ModalContext, GetMovieContext } from "./UseContext";
 
-function MovieRow({ title, fetchURL, largePoster, setGetMovie, setShowModal }) {
+function MovieRow({ title, url, largePoster }) {
+  const { setShowModal } = useContext(ModalContext);
+  const { setGetMovie } = useContext(GetMovieContext);
   const IMG_URL_LQ = "https://image.tmdb.org/t/p/w500";
 
   const [movieList, setMovieList] = useState([]);
@@ -17,11 +20,11 @@ function MovieRow({ title, fetchURL, largePoster, setGetMovie, setShowModal }) {
 
   useEffect(() => {
     async function FetchMovieData() {
-      const data = await HandleRequests.FetchData(fetchURL);
+      const data = await HandleRequests.FetchData(url);
       setMovieList(data.results);
     }
     FetchMovieData();
-  }, [fetchURL]);
+  }, [url]);
 
   async function OpenModal(movie) {
     setGetMovie(movie);

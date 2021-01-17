@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 
 import "./ModalScreen.css";
 import YoutubePlayer from "./YoutubePlayer.js";
@@ -7,8 +7,11 @@ import HandleRequests from "../HandleRequests";
 // icons
 
 import { VscChromeClose, VscDebugBreakpointFunction } from "react-icons/vsc";
+import { ModalContext, GetMovieContext } from "./UseContext";
 
-function ModalScreen({ showModal, setShowModal, getMovie, setGetMovie, videoKey, setVideoKey }) {
+function ModalScreen({ videoKey, setVideoKey }) {
+  const { showModal, setShowModal } = useContext(ModalContext);
+  const { getMovie, setGetMovie } = useContext(GetMovieContext);
   const MOVIE_URL = "https://api.themoviedb.org/3/movie/";
   const TV_URL = "https://api.themoviedb.org/3/tv/";
   const IMG_URL_LQ = "https://image.tmdb.org/t/p/w500";
